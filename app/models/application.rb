@@ -15,6 +15,6 @@ class Application < ApplicationRecord
         offer: 8, 
         waiting_on_next_steps: 9, 
         other: 10
-        }
+    }
 
 end
