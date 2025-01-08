@@ -1,7 +1,9 @@
 class Application < ApplicationRecord
+    belongs_to :user
 
+    scope :for_user, ->(user) {where(user: user)}
 
-    validates :company_name, :position_name, :job_posting_link
+    validates :company_name, :position_name, :job_posting_link, presence: true
 
     enum application_status: {
         need_to_apply: 0, 
@@ -15,6 +17,6 @@ class Application < ApplicationRecord
         offer: 8, 
         waiting_on_next_steps: 9, 
         other: 10
-        }
+    }
 
 end
