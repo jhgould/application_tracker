@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   
   get "/dashboard", to: "dashboards#show", as: :dashboard 
 
+  resources :applications
+
   #auto added route
   get "up" => "rails/health#show", as: :rails_health_check
 end

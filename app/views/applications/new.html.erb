@@ -1,0 +1,87 @@
+
+<%= form_with(model: @application, class: "pt-8 pb-8 px-4 sm:px-6 lg:px-8" ) do |form| %>
+        <div class="space-y-12">
+            <div class="border-b border-gray-900/10 pb-12">
+                <h2 class="text-base/7 font-semibold text-gray-900">Job Application Details</h2>
+
+                <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+                    <!-- Company Name -->
+                    <div class="sm:col-span-4">
+                        <label for="company_name" class="block text-sm font-medium text-gray-900">Company Name</label>
+                            <%= form.text_field :company_name, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Position Name -->
+                    <div class="sm:col-span-4">
+                        <label for="position_name" class="block text-sm font-medium text-gray-900">Position Name</label>
+                            <%= form.text_field :position_name, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm"%>
+                    </div>
+                    
+                    <!-- Job URL -->
+                    <div class="sm:col-span-4">
+                        <label for="job_posting_link" class="block text-sm font-medium text-gray-900">Job URL</label>
+                            <%= form.text_field :job_posting_link, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm"%>
+                    </div>
+
+                    <!-- Application Status -->
+                    <div class="sm:col-span-3">
+                        <label for="application_status" class="block text-sm font-medium text-gray-900">Application
+                            Status</label>
+                        <%= form.select :application_status, Application.application_statuses.keys.map{|status| [status.humanize, status]}, { selected: "need_to_apply" }, 
+                            class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Date Applied -->
+                    <div class="sm:col-span-3">
+                        <label for="date_applied" class="block text-sm font-medium text-gray-900">Date Applied</label>
+                         <%= form.date_field :date_applied, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Interview Date -->
+                    <div class="sm:col-span-3">
+                        <label for="interview_date" class="block text-sm font-medium text-gray-900">Interview Date</label>
+                        <%= form.date_field :interview_date, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Interview Time -->
+                    <div class="sm:col-span-3">
+                        <label for="interview_time" class="block text-sm font-medium text-gray-900">Interview Time</label>
+                        <%= form.time_field :interview_time, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Recruiter Name -->
+                    <div class="sm:col-span-4">
+                        <label for="recruiter_name" class="block text-sm font-medium text-gray-900">Recruiter Name</label>
+                        <%= form.text_field :recruiter_name, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Salary Range -->
+                    <div class="sm:col-span-3">
+                        <label for="min_salary" class="block text-sm font-medium text-gray-900">Minimum Salary</label>
+                        <%= form.text_field :min_salary, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+                    <div class="sm:col-span-3">
+                        <label for="max_salary" class="block text-sm font-medium text-gray-900">Maximum Salary</label>
+                        <%= form.text_field :max_salary, class: "mt-2 block w-full rounded-md bg-white px-3 py-1.5 text-gray-900 shadow-sm outline outline-1 outline-gray-300 focus:outline-indigo-600 sm:text-sm" %>
+                    </div>
+
+                    <!-- Stock Options -->
+                    <div class="sm:col-span-3 flex items-center gap-x-2">
+                        <%= form.check_box :bonus, class: "h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" %>
+                        <label for="stock_options" class="text-sm font-medium text-gray-900">Stock Options</label>
+                    </div>
+
+                    <!-- Bonus -->
+                    <div class="sm:col-span-3 flex items-center gap-x-2">
+                        <%= form.check_box :bonus, class: "h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500" %>
+                        <label for="bonus" class="text-sm font-medium text-gray-900">Bonus</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex items-center justify-end gap-x-6">
+                <button type="button" onclick="window.history.back();" class="text-sm font-semibold text-gray-900">Cancel</button>
+                <%= form.submit "Submit", class: "rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+            </div>
+        </div>
+    <%end%>
